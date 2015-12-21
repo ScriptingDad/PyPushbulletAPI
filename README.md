@@ -5,7 +5,7 @@ Requires requests library.
 ````
 from Pushbullet import Sms
 push = Sms('APIKey')
-push.send_sms(phone="", device=""deviceiden", message="")
+push.send_sms(phone="15551234567", device="deviceiden", message="This is a test message.")
 ````
 
 This also requires an Android device that has pushbullet installed and running on it as an SMS relay.  
