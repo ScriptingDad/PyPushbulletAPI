@@ -7,7 +7,7 @@ class Sms(Pushbullet):
 
     def __init__(self, access_token):
 
-        Pushbullet.__init__(self, access_token)
+        super().__init__(access_token)
         self.url = 'https://api.pushbullet.com/v2/ephemerals'
 
     def send_sms(self, message, device, phone):

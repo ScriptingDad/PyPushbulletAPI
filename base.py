@@ -21,7 +21,11 @@ class Pushbullet(object):
         # called at the end of a message send to update the remaining.
         if None is not self.rl_left:
             self.rl_reduce.append(
-                self.rl_left - response.headers['x-ratelimit-remaining'])
+                int(self.rl_left) - int(response.headers['x-ratelimit-remaining']))
         self.rl_left = response.headers['x-ratelimit-remaining']
         self.rl_reset = response.headers['x-ratelimit-reset']
         return mean(self.rl_reduce) if len(self.rl_reduce) > 0 else 0
+
+    @property
+    def reduced(self):
+        return mean(self.rl_reduce)
