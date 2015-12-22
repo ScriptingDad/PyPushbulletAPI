@@ -25,6 +25,5 @@ class Sms(Pushbullet):
                 'type': 'push'}
         response = post(url=self.url, headers=self.header, json=data)
         if response.status_code == 200:
-            self.ratelimit(response.headers['x-ratelimit-reset'],
-                           response.headers['x-ratelimit-remaining'])
+            self.ratelimit(response)
         return response
