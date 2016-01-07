@@ -4,6 +4,7 @@ from .base import Pushbullet, PushbulletException
 
 
 class Sms(Pushbullet):
+    """Initialize an SMS handler and format and sent SMS."""
 
     def __init__(self, access_token):
 
@@ -16,12 +17,12 @@ class Sms(Pushbullet):
                 not phone):
             raise PushbulletException('Missing required value (iden|device_id|phone)')
         data = {'push': {
-                    'package_name': 'com.pushbullet.android',
-                    'type': 'messaging_extension_reply',
-                    'conversation_iden': phone,
-                    'source_user_iden': self.me['iden'],
-                    'target_device_iden': device,
-                    'message': message},
+                'package_name': 'com.pushbullet.android',
+                'type': 'messaging_extension_reply',
+                'conversation_iden': phone,
+                'source_user_iden': self.me['iden'],
+                'target_device_iden': device,
+                'message': message},
                 'type': 'push'}
         response = post(url=self.url, headers=self.header, json=data)
         if response.status_code == 200:

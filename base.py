@@ -3,10 +3,12 @@ from requests import get
 
 
 class PushbulletException(Exception):
+    """Custom Exception Handler."""
     pass
 
 
 class Pushbullet(object):
+    """Top level methods and header info."""
 
     def __init__(self, access_token):
         self.header = {'Access-Token': access_token, 'Content-Type': 'application/json'}
